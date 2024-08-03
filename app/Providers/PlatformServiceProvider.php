@@ -5,6 +5,31 @@ namespace App\Providers;
 use App\Http\Services\Api\V1\Auth\AuthMobileService;
 use App\Http\Services\Api\V1\Auth\AuthService;
 use App\Http\Services\Api\V1\Auth\AuthWebService;
+use App\Http\Services\Api\V1\User\UserMobileService;
+use App\Http\Services\Api\V1\User\UserService;
+use App\Http\Services\Api\V1\User\UserWebService;
+use App\Http\Services\Api\V1\Advertisement\AdvertisementMobileService;
+use App\Http\Services\Api\V1\Advertisement\AdvertisementService;
+use App\Http\Services\Api\V1\Advertisement\AdvertisementWebService;
+use App\Http\Services\Api\V1\Doctor\DoctorMobileService;
+use App\Http\Services\Api\V1\Doctor\DoctorService;
+use App\Http\Services\Api\V1\Doctor\DoctorWebService;
+use App\Http\Services\Api\V1\Dependant\DependantMobileService;
+use App\Http\Services\Api\V1\Dependant\DependantService;
+use App\Http\Services\Api\V1\Dependant\DependantWebService;
+use App\Http\Services\Api\V1\Rate\RateMobileService;
+use App\Http\Services\Api\V1\Rate\RateService;
+use App\Http\Services\Api\V1\Rate\RateWebService;
+use App\Http\Services\Api\V1\City\CityMobileService;
+use App\Http\Services\Api\V1\City\CityService;
+use App\Http\Services\Api\V1\City\CityWebService;
+use App\Http\Services\Api\V1\Category\CategoryMobileService;
+use App\Http\Services\Api\V1\Category\CategoryService;
+use App\Http\Services\Api\V1\Category\CategoryWebService;
+
+use App\Http\Services\Api\V1\ContactUs\ContactUsMobileService;
+use App\Http\Services\Api\V1\ContactUs\ContactUsService;
+use App\Http\Services\Api\V1\ContactUs\ContactUsWebService;
 use Illuminate\Support\ServiceProvider;
 
 class PlatformServiceProvider extends ServiceProvider
@@ -18,7 +43,39 @@ class PlatformServiceProvider extends ServiceProvider
             AuthService::class => [
                 AuthWebService::class,
                 AuthMobileService::class
-            ]
+            ],
+            UserService::class => [
+                UserWebService::class,
+                UserMobileService::class
+            ],
+            AdvertisementService::class => [
+                AdvertisementWebService::class,
+                AdvertisementMobileService::class
+            ],
+            DoctorService::class => [
+                DoctorWebService::class,
+                DoctorMobileService::class
+            ],
+            DependantService::class => [
+                DependantWebService::class,
+                DependantMobileService::class
+            ],
+            RateService::class => [
+                RateWebService::class,
+                RateMobileService::class
+            ],
+            CityService::class => [
+                CityWebService::class,
+                CityMobileService::class
+            ],
+            CategoryService::class => [
+                CategoryWebService::class,
+                CategoryMobileService::class
+            ],
+            ContactUsService::class => [
+                ContactUsWebService::class,
+                ContactUsMobileService::class
+            ],
         ],
     ];
     private ?int $version;

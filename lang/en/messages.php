@@ -170,4 +170,6 @@ return [
     'The purchase order has been created and will be published after review' => 'The purchase order has been created and will be published after review.',
     'Your inquiry has been submitted and will be published after review' => 'Your inquiry has been submitted and will be published after review.',
 
+    'Your account has been verified successfully' => 'Your account has been verified successfully',
+
 ];

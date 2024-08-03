@@ -19,4 +19,14 @@ class UserRepository extends Repository implements UserRepositoryInterface
     {
         return $this->model::query()->where('is_active', true);
     }
+
+    public function getLikedDoctors($id)
+    {
+        return $this->model::find($id)->doctors;
+    }
+
+    public function getAllDependants($id)
+    {
+        return $this->model::where('parent_id',$id)->get();
+    }
 }
