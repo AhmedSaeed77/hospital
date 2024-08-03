@@ -24,7 +24,7 @@ class UserPasswordRequest extends FormRequest
     {
         return [
             'current_password' => ['required', 'current_password:api', 'exclude'],
-            'password' => ['required', 'confirmed', Password::min(8)],
+            'newpassword' => ['required', 'confirmed', Password::min(8)],
         ];
     }
 }

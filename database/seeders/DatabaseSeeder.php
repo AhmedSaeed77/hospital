@@ -14,6 +14,12 @@ class DatabaseSeeder extends Seeder
         $this->call([
             ManagerSeeder::class,
             UserSeeder::class,
+            CategorySeeder::class,
+            CitySeeder::class,
+            DoctorSeeder::class,
+            DoctorExperienceSeeder::class,
+            DoctorQualificationSeeder::class,
+            AdvertisementSeeder::class,
         ]);
     }
 }
