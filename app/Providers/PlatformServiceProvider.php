@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Http\Services\Api\V1\Auth\AuthMobileService;
 use App\Http\Services\Api\V1\Auth\AuthService;
 use App\Http\Services\Api\V1\Auth\AuthWebService;
+
 use App\Http\Services\Api\V1\User\UserMobileService;
 use App\Http\Services\Api\V1\User\UserService;
 use App\Http\Services\Api\V1\User\UserWebService;
@@ -26,10 +27,14 @@ use App\Http\Services\Api\V1\City\CityWebService;
 use App\Http\Services\Api\V1\Category\CategoryMobileService;
 use App\Http\Services\Api\V1\Category\CategoryService;
 use App\Http\Services\Api\V1\Category\CategoryWebService;
-
 use App\Http\Services\Api\V1\ContactUs\ContactUsMobileService;
 use App\Http\Services\Api\V1\ContactUs\ContactUsService;
 use App\Http\Services\Api\V1\ContactUs\ContactUsWebService;
+
+use App\Http\Services\Api\V1\Book\BookMobileService;
+use App\Http\Services\Api\V1\Book\BookService;
+use App\Http\Services\Api\V1\Book\BookWebService;
+
 use Illuminate\Support\ServiceProvider;
 
 class PlatformServiceProvider extends ServiceProvider
@@ -75,6 +80,10 @@ class PlatformServiceProvider extends ServiceProvider
             ContactUsService::class => [
                 ContactUsWebService::class,
                 ContactUsMobileService::class
+            ],
+            BookService::class => [
+                BookWebService::class,
+                BookMobileService::class
             ],
         ],
     ];
