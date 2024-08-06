@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+
 use App\Repository\Eloquent\Repository;
 use App\Repository\Eloquent\UserRepository;
 use App\Repository\Eloquent\OtpRepository;
@@ -12,8 +13,12 @@ use App\Repository\Eloquent\RateRepository;
 use App\Repository\Eloquent\CityRepository;
 use App\Repository\Eloquent\CategoryRepository;
 use App\Repository\Eloquent\ContactUsRepository;
+use App\Repository\Eloquent\BookRepository;
+use App\Repository\Eloquent\DoctorTimeRepository;
 
 use App\Repository\ContactUsRepositoryInterface;
+use App\Repository\BookRepositoryInterface;
+use App\Repository\DoctorTimeRepositoryInterface;
 use App\Repository\CityRepositoryInterface;
 use App\Repository\CategoryRepositoryInterface;
 use App\Repository\RateRepositoryInterface;
@@ -44,6 +49,8 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->singleton(CityRepositoryInterface::class, CityRepository::class);
         $this->app->singleton(CategoryRepositoryInterface::class, CategoryRepository::class);
         $this->app->singleton(ContactUsRepositoryInterface::class, ContactUsRepository::class);
+        $this->app->singleton(BookRepositoryInterface::class, BookRepository::class);
+        $this->app->singleton(DoctorTimeRepositoryInterface::class, DoctorTimeRepository::class);
     }
 
     /**

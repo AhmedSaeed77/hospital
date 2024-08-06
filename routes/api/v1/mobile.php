@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\V1\Rate\RateController;
 use App\Http\Controllers\Api\V1\City\CityController;
 use App\Http\Controllers\Api\V1\Category\CategoryController;
 use App\Http\Controllers\Api\V1\ContactUs\ContactUsController;
+use App\Http\Controllers\Api\V1\Book\BookController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'auth', 'controller' => AuthController::class], function () {
@@ -45,6 +46,8 @@ Route::get('ads', [AdvertisementController::class, 'index']);
 Route::apiResource('dependants', DependantController::class)->only(['store', 'index']);
 
 Route::apiResource('rates', RateController::class)->only(['store', 'index']);
+
+Route::apiResource('book/request', BookController::class)->only(['store']);
 
 Route::post('contact-us', [ContactUsController::class, 'store']);
 

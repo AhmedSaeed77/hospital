@@ -4,6 +4,7 @@ namespace App\Http\Resources\V1\Doctor;
 
 use App\Http\Resources\V1\Doctor\ExperiencesResource;
 use App\Http\Resources\V1\Doctor\QualificationResource;
+use App\Http\Resources\V1\Doctor\DoctorTimeResource;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -30,6 +31,7 @@ class OneDoctorResource extends JsonResource
             'qalifications' => QualificationResource::collection($this->qualifications),
             'experiences' => ExperiencesResource::collection($this->experiences),
             'rates' => RateResource::collection($this->rates),
+            'times' => DoctorTimeResource::collection($this->times),
         ];
     }
 }

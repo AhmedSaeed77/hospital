@@ -62,4 +62,14 @@ class Doctor extends Model
     {
         return $this->hasMany(Rate::class, 'doctor_id');
     }
+
+    public function times()
+    {
+        return $this->hasMany(DoctorTime::class, 'doctor_id');
+    }
+
+    public function bookings()
+    {
+        return $this->hasMany(Book::class, 'doctor_id');
+    }
 }
