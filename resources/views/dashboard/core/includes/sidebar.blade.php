@@ -37,6 +37,42 @@
                         </p>
                     </a>
                 </li>
+
+                <li class="nav-item  {{ in_array(request()->route()->getName(),['infos.edit'])? 'menu-open': '' }} {{ Route::currentRouteName()=='infos.edit'?'activeNav':'' }}">
+                    <a href="{{ route('infos.edit',auth('web')->user()->id) }}" class="nav-link">
+                        <i class="nav-icon fas fa-circle"></i>
+                        <p>
+                            @lang('dashboard.infos')
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item  {{ in_array(request()->route()->getName(),['terms-and-conditions-content.index', 'about-content.index', 'infos.index', ])? 'menu-open': '' }}">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-circle"></i>
+                        <p>
+                            @lang('dashboard.info_control')
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('about-content.index') }}"
+                               class="nav-link {{ in_array(request()->route()->getName(),['about-content.index'])? 'active': '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>@lang('dashboard.about_page')</p>
+                            </a>
+                        </li>
+                        <li
+                            class="nav-item">
+                            <a href="{{ route('terms-and-conditions-content.index') }}" class="nav-link {{ in_array(request()->route()->getName(),['terms-and-conditions-content.index'])? 'active': '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>@lang('dashboard.terms')</p>
+                            </a>
+                        </li>
+                        
+                    </ul>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
