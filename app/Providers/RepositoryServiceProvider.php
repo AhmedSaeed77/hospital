@@ -15,7 +15,11 @@ use App\Repository\Eloquent\CategoryRepository;
 use App\Repository\Eloquent\ContactUsRepository;
 use App\Repository\Eloquent\BookRepository;
 use App\Repository\Eloquent\DoctorTimeRepository;
+use App\Repository\Eloquent\StructureRepository;
+use App\Repository\Eloquent\InfoRepository;
 
+use App\Repository\InfoRepositoryInterface;
+use App\Repository\StructureRepositoryInterface;
 use App\Repository\ContactUsRepositoryInterface;
 use App\Repository\BookRepositoryInterface;
 use App\Repository\DoctorTimeRepositoryInterface;
@@ -51,6 +55,8 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->singleton(ContactUsRepositoryInterface::class, ContactUsRepository::class);
         $this->app->singleton(BookRepositoryInterface::class, BookRepository::class);
         $this->app->singleton(DoctorTimeRepositoryInterface::class, DoctorTimeRepository::class);
+        $this->app->singleton(StructureRepositoryInterface::class, StructureRepository::class);
+        $this->app->singleton(InfoRepositoryInterface::class, InfoRepository::class);
     }
 
     /**

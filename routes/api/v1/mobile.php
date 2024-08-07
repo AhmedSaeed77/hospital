@@ -11,6 +11,9 @@ use App\Http\Controllers\Api\V1\City\CityController;
 use App\Http\Controllers\Api\V1\Category\CategoryController;
 use App\Http\Controllers\Api\V1\ContactUs\ContactUsController;
 use App\Http\Controllers\Api\V1\Book\BookController;
+use App\Http\Controllers\Api\V1\Structure\AboutController;
+use App\Http\Controllers\Api\V1\Info\InfoSiteController;
+use App\Http\Controllers\Api\V1\Structure\TermsAndConditionsController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'auth', 'controller' => AuthController::class], function () {
@@ -64,5 +67,11 @@ Route::group(['prefix' => 'doctors','controller' => DoctorController::class], fu
 
 Route::get('cities', [CityController::class, 'index']);
 Route::get('categories', [CategoryController::class, 'index']);
+
+
+Route::get('terms-and-conditions', TermsAndConditionsController::class);
+Route::get('about-us', AboutController::class);
+Route::get('info',InfoSiteController::class);
+
 
 
