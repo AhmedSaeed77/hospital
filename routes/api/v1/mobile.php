@@ -75,3 +75,15 @@ Route::get('info',InfoSiteController::class);
 
 
 
+Route::get('clear-cache', function() {
+    Artisan::call('cache:clear');
+    Artisan::call('view:clear');
+    Artisan::call('config:cache');
+    return "done";
+});
+
+Route::get('storage', function () {
+    Artisan::call('storage:link');
+    return "done";
+});
+
