@@ -24,7 +24,9 @@ return new class extends Migration
             $table->string('lat');
             $table->string('lng');
             $table->string('relation')->nullable();
-            $table->enum('gender', ['male', 'female']);
+            // $table->enum('gender', ['male', 'female']);
+            $table->unsignedBigInteger('gender_id')->nullable();
+            $table->foreign('gender_id')->references('id')->on('genders')->onDelete('cascade');
             $table->string('fcm_token')->nullable();
             $table->unsignedBigInteger('parent_id')->nullable();
             $table->foreign('parent_id')->references('id')->on('users')->onDelete('cascade');

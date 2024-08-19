@@ -1,7 +1,7 @@
 <?php
 
 namespace Database\Factories;
-use App\Models\Gender;
+
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
  */
-class UserFactory extends Factory
+class GenderFactory extends Factory
 {
     /**
      * The current password being used by the factory.
@@ -23,21 +23,9 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
-        $gender = Gender::query()->select('id')->inRandomOrder()->first();
         return [
-            'full_name' => fake()->name(),
-            'email' => fake()->unique()->safeEmail(),
-            // 'email_verified_at' => now(),
-            'password' => static::$password ??= Hash::make('password'),
-            'image' => fake()->imageUrl(),
-            'phone' => fake()->e164PhoneNumber(),
-            'birth_name' => fake()->name(),
-            'birth_date' => fake()->date(),
-            'address' => fake()->address(),
-            'lat' => fake()->latitude(),
-            'lng' => fake()->longitude(),
-            'gender_id' => $gender->id,
-            // 'remember_token' => Str::random(10),
+            'name_en' => fake()->name(),
+            'name_ar' => fake()->name(),
         ];
     }
 

@@ -32,7 +32,6 @@ class SignUpRequest extends FormRequest
             'lat' => ['required', 'string'],
             'lng' => ['required', 'string'],
             'image' => ['required','image', 'mimetypes:image/jpeg,image/png,image/gif,image/bmp,image/webp,image/svg+xml,image/x-icon', 'max:5120'],
-            'password' => ['required',Password::min(8)->letters()->numbers()->symbols(),'confirmed'],
         ];
     }
 }

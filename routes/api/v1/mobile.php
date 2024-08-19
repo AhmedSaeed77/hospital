@@ -67,6 +67,7 @@ Route::group(['prefix' => 'doctors','controller' => DoctorController::class], fu
 
 Route::get('cities', [CityController::class, 'index']);
 Route::get('categories', [CategoryController::class, 'index']);
+Route::get('genders', [CategoryController::class, 'indexGender']);
 
 
 Route::get('terms-and-conditions', TermsAndConditionsController::class);
