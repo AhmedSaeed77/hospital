@@ -24,6 +24,7 @@ class OtpVerifyRequest extends FormRequest
         return [
             'otp_token' => ['required' , 'string'] ,
             'otp' => ['required' , 'string'] ,
+            'phone' => ['required' , 'numeric','exists:users,phone'] ,
         ];
     }
 }
