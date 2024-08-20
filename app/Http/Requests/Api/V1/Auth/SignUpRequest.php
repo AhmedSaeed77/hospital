@@ -31,7 +31,7 @@ class SignUpRequest extends FormRequest
             'address' => ['required', 'string'],
             'lat' => ['required', 'string'],
             'lng' => ['required', 'string'],
-            'image' => ['required','image', 'mimetypes:image/jpeg,image/png,image/gif,image/bmp,image/webp,image/svg+xml,image/x-icon', 'max:5120'],
+            'image' => ['nullable','image', 'mimetypes:image/jpeg,image/png,image/gif,image/bmp,image/webp,image/svg+xml,image/x-icon', 'max:5120'],
         ];
     }
 }
