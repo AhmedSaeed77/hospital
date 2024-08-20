@@ -28,10 +28,10 @@ abstract class AuthService extends PlatformService
         try
         {
             $data = $request->validated();
-            if ($request->hasFile('image'))
-            {
-                $data['image'] = $this->fileManagerService->handle("image", "users/images");
-            }
+            // if ($request->hasFile('image'))
+            // {
+            //     $data['image'] = $this->fileManagerService->handle("image", "users/images");
+            // }
             $user = $this->userRepository->create($data);
             DB::commit();
             return $this->responseSuccess(message: __('messages.created successfully'), data: new UserResource($user, false));
