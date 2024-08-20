@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Resources\V1\Advertisement;
-
+use App\Http\Resources\V1\Doctor\DoctorResource;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -18,7 +18,7 @@ class AdvertisementResource extends JsonResource
             'id' => $this->id,
             'type' => $this->type,
             'image' => url($this->image),
-            'doctor' => $this->doctor_id,
+            'doctor' => new DoctorResource($this->doctor),
         ];
     }
 }
