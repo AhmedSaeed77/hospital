@@ -47,7 +47,7 @@ class OtpService
             $user = $this->userRepository->first('phone',$request->phone);
             if (!$this->otpRepository->check($data['otp'], $data['otp_token'],$user->id))
                 return $this->responseFail(message: __('messages.Wrong OTP code or expired'));
-            auth('api')->user()?->otp()?->delete();
+                $user->otp()?->delete();
             DB::commit();
             return $this->responseSuccess(data:new UserResource($user,true), message: __('messages.Your account has been verified successfully'));
         }
