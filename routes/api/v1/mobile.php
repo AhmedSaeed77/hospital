@@ -32,9 +32,9 @@ Route::group(['prefix' => 'auth', 'controller' => AuthController::class], functi
         Route::post('up', 'signUp');
         Route::post('out', 'signOut');
     });
-    Route::group(['prefix' => 'otp', 'middleware' => ['auth:api']], function () {
+    Route::group(['prefix' => 'otp'], function () {
         Route::post('/verify', [OtpController::class, 'verify']);
-        Route::get('/', [OtpController::class, 'send']);
+        Route::post('/', [OtpController::class, 'send']);
     });
 });
 
@@ -67,6 +67,7 @@ Route::group(['prefix' => 'doctors','controller' => DoctorController::class], fu
 
 Route::get('cities', [CityController::class, 'index']);
 Route::get('categories', [CategoryController::class, 'index']);
+Route::get('genders', [CategoryController::class, 'indexGender']);
 
 
 Route::get('terms-and-conditions', TermsAndConditionsController::class);

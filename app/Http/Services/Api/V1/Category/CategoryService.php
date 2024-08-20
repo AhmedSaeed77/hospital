@@ -8,6 +8,7 @@ use App\Http\Services\Mutual\GetService;
 use App\Http\Services\Mutual\FileManagerService;
 use App\Http\Traits\Responser;
 use App\Repository\CategoryRepositoryInterface;
+use App\Repository\GenderRepositoryInterface;
 use Exception;
 use Illuminate\Support\Facades\DB;
 
@@ -17,6 +18,7 @@ abstract class CategoryService extends PlatformService
 
     public function __construct(
         private readonly CategoryRepositoryInterface $categoryRepository,
+        private readonly GenderRepositoryInterface $genderRepository,
         private readonly FileManagerService          $fileManagerService,
         private readonly GetService                          $getService,
     )
@@ -26,6 +28,11 @@ abstract class CategoryService extends PlatformService
     public function index()
     {
         return $this->getService->handle(CategoryResource::class, $this->categoryRepository);
+    }
+
+    public function indexGender()
+    {
+        return $this->getService->handle(CategoryResource::class, $this->genderRepository);
     }
 
 }

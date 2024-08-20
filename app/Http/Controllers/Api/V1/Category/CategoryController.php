@@ -19,4 +19,9 @@ class CategoryController extends Controller
         return $this->category->index();
     }
 
+    public function indexGender()
+    {
+        return $this->category->indexGender();
+    }
+
 }
