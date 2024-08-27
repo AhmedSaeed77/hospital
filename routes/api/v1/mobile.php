@@ -50,7 +50,8 @@ Route::apiResource('dependants', DependantController::class)->only(['store', 'in
 
 Route::apiResource('rates', RateController::class)->only(['store', 'index']);
 
-Route::apiResource('book/request', BookController::class)->only(['store']);
+Route::apiResource('book', BookController::class);
+Route::post('book/cancel/{id}', [BookController::class, 'cancel']);
 
 Route::post('contact-us', [ContactUsController::class, 'store']);
 

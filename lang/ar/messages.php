@@ -18,6 +18,7 @@ return [
     'User updated successfully' => 'تم تعديل المعلم بنجاح',
     'User deleted successfully' => 'تم حذف المعلم بنجاح',
     'Admin created successfully' => 'تم انشاء المدير بنجاح',
+    'canceled successfully' => 'تم الالغاء بنجاح',
     'Admin updated successfully' => 'تم تعديل المدير بنجاح',
     'Admin deleted successfully' => 'تم حذف المدير بنجاح',
     'Field created successfully' => 'تم انشاء المجال بنجاح',

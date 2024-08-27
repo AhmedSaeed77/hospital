@@ -13,4 +13,9 @@ class BookRepository extends Repository implements BookRepositoryInterface
     {
         parent::__construct($model);
     }
+
+    public function getAllBooking($status)
+    {
+        return $this->model::query()->where('status', $status)->latest()->get();
+    }
 }
