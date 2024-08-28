@@ -22,7 +22,7 @@ class UserRepository extends Repository implements UserRepositoryInterface
 
     public function getLikedDoctors($id)
     {
-        return $this->model::find($id)->doctors;
+        return $this->model::find($id)->doctors()->orderBy('created_at', 'asc')->get();
     }
 
     public function getAllDependants($id)

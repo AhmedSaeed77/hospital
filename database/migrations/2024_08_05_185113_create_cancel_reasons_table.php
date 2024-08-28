@@ -11,8 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('books', function (Blueprint $table) {
-            $table->string('reason')->nullable();
+        Schema::create('cancel_reasons', function (Blueprint $table) {
+            $table->id();
+            $table->string('name_en');
+            $table->string('name_ar');
+            $table->timestamps();
         });
     }
 
@@ -21,8 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('books', function (Blueprint $table) {
-            $table->dropColumn('reason');
-        });
+        Schema::dropIfExists('cancel_reasons');
     }
 };

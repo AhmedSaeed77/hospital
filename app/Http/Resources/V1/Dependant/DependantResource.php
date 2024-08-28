@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Resources\V1\Dependant;
-
+use App\Http\Resources\V1\Gender\GenderResource;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -16,15 +16,14 @@ class DependantResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'full_name' => $this->full_name,
-            'email' => $this->email,
-            'phone' => $this->phone,
-            'relation' => $this->relation,
-            'lat' => $this->lat,
-            'lng' => $this->lng,
-            'address' => $this->address,
-            'gender' => $this->gender,
-            'image' => url($this->image) ?? null,
+                    'full_name' => $this->full_name,
+                    'email' => $this->email,
+                    'phone' => $this->phone,
+                    'address' => $this->address,
+                    'lat' => $this->lat,
+                    'lng' => $this->lng,
+                    'gender' => new GenderResource($this->gender),
+                    'image' => $this->image_url,
         ];
     }
 }

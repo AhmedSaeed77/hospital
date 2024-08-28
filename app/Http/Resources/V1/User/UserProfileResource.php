@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Resources\V1\User;
-
+use App\Http\Resources\V1\Gender\GenderResource;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -24,8 +24,8 @@ class UserProfileResource extends JsonResource
                     'birth_date' => $this->birth_date,
                     'lat' => $this->lat,
                     'lng' => $this->lng,
-                    'gender' => $this->gender,
-                    'image' => url($this->image),
+                    'gender' => new GenderResource($this->gender),
+                    'image' => $this->image_url,
                 ];
     }
 }

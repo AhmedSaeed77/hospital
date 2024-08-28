@@ -58,8 +58,10 @@ Route::post('contact-us', [ContactUsController::class, 'store']);
 Route::group(['prefix' => 'doctors','controller' => DoctorController::class], function () {
     Route::get('/', 'index');
     Route::get('/{id}', 'show');
-    Route::get('popular', 'getPopular');
-    Route::get('liked', 'getLiked');
+    Route::get('/{id}/qualifications', 'getQualifications');
+    Route::get('/{id}/rates', 'getRates');
+    Route::get('popular/doctor', 'getPopular');
+    Route::get('like/doctor', 'getLiked');
     Route::post('like', 'likeDoctor');
     Route::post('unlike', 'unLikeDoctor');
     Route::post('updatePassword', 'updatePassword');
@@ -69,6 +71,7 @@ Route::group(['prefix' => 'doctors','controller' => DoctorController::class], fu
 Route::get('cities', [CityController::class, 'index']);
 Route::get('categories', [CategoryController::class, 'index']);
 Route::get('genders', [CategoryController::class, 'indexGender']);
+Route::get('cancel-reason', [CategoryController::class, 'indexCancelReason']);
 
 
 Route::get('terms-and-conditions', TermsAndConditionsController::class);

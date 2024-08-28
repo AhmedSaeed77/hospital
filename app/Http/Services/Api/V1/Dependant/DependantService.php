@@ -5,6 +5,7 @@ namespace App\Http\Services\Api\V1\Dependant;
 use App\Http\Requests\Api\V1\Dependant\DependantRequest;
 use App\Http\Requests\Api\V1\User\UserRequest;
 use App\Http\Resources\V1\Dependant\DependantResource;
+use App\Http\Resources\V1\User\UserResource;
 use App\Http\Services\PlatformService;
 use App\Http\Services\Mutual\GetService;
 use App\Http\Services\Mutual\FileManagerService;
@@ -35,6 +36,16 @@ abstract class DependantService extends PlatformService
         DB::beginTransaction();
         try
         {
+            $user = $this->userRepository->first('email',$request->email);
+            if($user)
+            {
+                return $this->responseFail(message: __('messages.email_is_existing'));
+            }
+            $user = $this->userRepository->first('phone',$request->phone);
+            if($user)
+            {
+                return $this->responseFail(message: __('messages.phone_is_existing'));
+            }
             $data = $request->validated();
             if ($request->hasFile('image'))
             {
@@ -43,7 +54,7 @@ abstract class DependantService extends PlatformService
             $data['parent_id'] = auth()->user()->id;
             $user = $this->userRepository->create($data);
             DB::commit();
-            return $this->responseSuccess(message: __('messages.created successfully'), data: new UserResource($user, false));
+            return $this->responseSuccess(message: __('messages.created successfully'), data: new DependantResource($user, false));
         }
         catch (Exception $e)
         {

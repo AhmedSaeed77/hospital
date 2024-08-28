@@ -19,6 +19,8 @@ return new class extends Migration
             $table->foreignId('doctor_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->unsignedBigInteger('parent_id')->nullable();
             $table->foreign('parent_id')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('cancel_reason_id')->nullable();
+            $table->foreign('cancel_reason_id')->references('id')->on('cancel_reasons')->onDelete('cascade');
             $table->date('date');
             $table->time('time');
             $table->text('description');

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>@lang('dashboard.tasera') | @lang('dashboard.Dashboard') | @lang('titles.Login')</title>
+    <title>@lang('dashboard.Elryad') | @lang('dashboard.Dashboard') | @lang('titles.Login')</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -64,9 +64,7 @@
                 </div>
             </form>
 
-            <p class="mb-1">
-                <a href="#">@lang('dashboard.I forgot my password')</a>
-            </p>
+            
         </div>
         <!-- /.login-card-body -->
     </div>

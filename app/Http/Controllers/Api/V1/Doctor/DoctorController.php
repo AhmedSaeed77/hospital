@@ -25,6 +25,16 @@ class DoctorController extends Controller
         return $this->doctor->show($id);
     }
 
+    public function getQualifications($id)
+    {
+        return $this->doctor->getQualifications($id);
+    }
+
+    public function getRates($id)
+    {
+        return $this->doctor->getRates($id);
+    }
+
     public function getPopular()
     {
         return $this->doctor->getPopular();

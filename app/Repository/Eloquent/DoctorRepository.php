@@ -32,6 +32,16 @@ class DoctorRepository extends Repository implements DoctorRepositoryInterface
 
     public function getAllPopularDoctors()
     {
-        return $this->model::query()->where('is_popular', true)->get();
+        // return $this->model::query()->where('is_popular', true)->get();
+        return $this->model::with('rates')
+        ->withAvg('rates', 'rate')   // Calculate the average rate
+        ->orderBy('rates_avg_rate', 'desc') // Order by the average rate in descending order
+        ->limit(6)                    // Limit to top 6 doctors
+        ->get();
+    }
+
+    public function getLikedDoctors($id)
+    {
+        return $this->doctors();
     }
 }

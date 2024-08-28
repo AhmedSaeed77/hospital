@@ -30,7 +30,7 @@ class DependantRequest extends FormRequest
             'lat' => ['required', 'string'],
             'lng' => ['required', 'string'],
             'relation' => ['required', 'string'],
-            'gender' => 'required|in:male,female',
+            'gender_id' => ['required', 'exists:genders,id'],
             'image' => ['nullable','image', 'mimetypes:image/jpeg,image/png,image/gif,image/bmp,image/webp,image/svg+xml,image/x-icon', 'max:5120'],
         ];
     }
