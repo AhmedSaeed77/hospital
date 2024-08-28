@@ -18,6 +18,8 @@ return [
     'User updated successfully' => 'تم تعديل المعلم بنجاح',
     'User deleted successfully' => 'تم حذف المعلم بنجاح',
     'Admin created successfully' => 'تم انشاء المدير بنجاح',
+    'email_is_existing' => 'الايميل موجود بالفعل',
+    'phone_is_existing' => 'الجوال موجود بالفعل',
     'canceled successfully' => 'تم الالغاء بنجاح',
     'Admin updated successfully' => 'تم تعديل المدير بنجاح',
     'Admin deleted successfully' => 'تم حذف المدير بنجاح',

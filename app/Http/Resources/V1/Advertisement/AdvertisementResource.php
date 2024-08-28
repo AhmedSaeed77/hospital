@@ -17,7 +17,7 @@ class AdvertisementResource extends JsonResource
         return [
             'id' => $this->id,
             'type' => $this->type,
-            'image' => url($this->image),
+            'image' => $this->image_url,
             'doctor' => new DoctorResource($this->doctor),
         ];
     }

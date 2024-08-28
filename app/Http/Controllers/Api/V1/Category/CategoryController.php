@@ -24,4 +24,9 @@ class CategoryController extends Controller
         return $this->category->indexGender();
     }
 
+    public function indexCancelReason()
+    {
+        return $this->category->indexCancelReason();
+    }
+
 }

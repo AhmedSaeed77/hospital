@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'Elryad' => 'الرياض',
+    'Elryad' => 'دوكديما',
     'Dashboard' => 'لوحة التحكم',
     'Login' => 'تسجيل الدخول',
     'Logout' => 'تسجيل الخروج',
@@ -32,6 +32,7 @@ return [
     'Create' => 'إنشاء',
     'Show' => 'عرض',
     'Edit' => 'تعديل',
+    
     'Delete' => 'حذف',
     'No entries for this table' => 'لا توجد بيانات لهذا الجدول',
     'Create Admin' => 'إنشاء مسؤول',

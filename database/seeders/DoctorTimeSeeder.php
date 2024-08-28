@@ -23,9 +23,18 @@ class DoctorTimeSeeder extends Seeder
                 'Friday' => ['ar' => 'الجمعة', 'en' => 'Friday' , 'index' => '6'],
                 'Saturday' => ['ar' => 'السبت', 'en' => 'Saturday' , 'index' => '7'],
             ];
-            foreach ($daysOfWeeks as $day => $translations) {
+            foreach ($daysOfWeeks as $day => $translations)
+            {
                 DoctorTime::create([
                                         'doctor_id' => 1,
+                                        'day_ar' => $translations['ar'],
+                                        'day_en' => $translations['en'],
+                                        'day_index' => $translations['index'],
+                                        'from' => '09:00',
+                                        'to' => '17:00'
+                                    ]);
+                DoctorTime::create([
+                                        'doctor_id' => 9,
                                         'day_ar' => $translations['ar'],
                                         'day_en' => $translations['en'],
                                         'day_index' => $translations['index'],

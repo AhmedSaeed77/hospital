@@ -16,6 +16,8 @@ return [
     'Student deleted successfully' => 'Student deleted successfully.',
     'User created successfully' => 'User created successfully.',
     'User updated successfully' => 'User updated successfully.',
+    'email_is_existing' => 'Email Is Existing',
+    'phone_is_existing' => 'Phone Is Existing',
     'canceled successfully' => 'canceled successfully',
     'User deleted successfully' => 'User deleted successfully.',
     'Admin created successfully' => 'Admin created successfully.',

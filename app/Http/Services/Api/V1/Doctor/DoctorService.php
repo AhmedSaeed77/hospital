@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Resources\V1\Doctor\DoctorResource;
 use App\Http\Resources\V1\Doctor\OneDoctorResource;
 use App\Http\Resources\V1\Doctor\DoctorLikedResource;
+use App\Http\Resources\V1\Doctor\QualificationExperienceResource;
+use App\Http\Resources\V1\Doctor\RateDoctorsResource;
 use Illuminate\Support\Facades\Hash;
 
 abstract class DoctorService extends PlatformService
@@ -41,6 +43,16 @@ abstract class DoctorService extends PlatformService
     public function show($id)
     {
         return $this->getService->handle(OneDoctorResource::class, $this->doctorRepository, 'getById',parameters:[$id],is_instance:true);
+    }
+
+    public function getQualifications($id)
+    {
+        return $this->getService->handle(QualificationExperienceResource::class, $this->doctorRepository, 'getById',parameters:[$id],is_instance:true);
+    }
+
+    public function getRates($id)
+    {
+        return $this->getService->handle(RateDoctorsResource::class, $this->doctorRepository, 'getById',parameters:[$id],is_instance:true);
     }
 
     public function getPopular()

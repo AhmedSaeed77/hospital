@@ -13,11 +13,19 @@ class Doctor extends Model
 
     protected $guarded = [];
 
+    protected function imageUrl(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => $this->image ? url($this->image) : null,
+        );
+    }
+
     protected function isLiked(): Attribute
     {
         return new Attribute(
             get: function () {
-                if (Auth::check()) {
+                if (Auth::check())
+                {
                     $user = Auth::user();
                     return $user->doctors()->where('doctor_id', $this->id)->exists();
                 }

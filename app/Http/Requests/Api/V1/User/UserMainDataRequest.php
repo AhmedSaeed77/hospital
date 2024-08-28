@@ -22,14 +22,14 @@ class UserMainDataRequest extends FormRequest
     public function rules(): array
     {
         return [
-                    'full_name' => ['required', 'string'],
-                    'email' => ['required', 'email:rfc,dns'],
-                    'phone' => ['required', 'numeric'],
-                    'birth_name' => ['required', 'string'],
-                    'birth_date' => ['required', 'date'],
-                    'address' => ['required', 'string'],
-                    'lat' => ['required', 'string'],
-                    'lng' => ['required', 'string'],
+                    'full_name' => ['nullable', 'string'],
+                    'email' => ['nullable', 'email:rfc,dns'],
+                    'phone' => ['nullable', 'numeric'],
+                    'birth_name' => ['nullable', 'string'],
+                    'birth_date' => ['nullable', 'date'],
+                    'address' => ['nullable', 'string'],
+                    'lat' => ['nullable', 'string'],
+                    'lng' => ['nullable', 'string'],
                     'image' => ['nullable','image', 'mimetypes:image/jpeg,image/png,image/gif,image/bmp,image/webp,image/svg+xml,image/x-icon', 'max:5120'],
                     'password' => ['nullable'],
                 ];

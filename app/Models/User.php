@@ -8,6 +8,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Tymon\JWTAuth\Contracts\JWTSubject;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class User extends Authenticatable implements JWTSubject
 {
@@ -75,10 +76,12 @@ class User extends Authenticatable implements JWTSubject
         return [];
     }
 
-    // protected function imageUrl(): Attribute
-    // {
-    //     return Attribute::get(fn() => $this->image !== null ? url($this->image) : null);
-    // }
+    protected function imageUrl(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => $this->image ? url($this->image) : null,
+        );
+    }
 
     public function token()
     {
