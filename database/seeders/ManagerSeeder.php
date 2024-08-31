@@ -17,7 +17,8 @@ class ManagerSeeder extends Seeder
             'name' => 'Admin',
             'email' => 'admin@elryad.com',
             'phone' => '+96650000000',
-            'password' => 'elryad1256!#'
+            'password' => 'elryad1256!#',
+            // 'password' => '123123123'
         ]);
     }
 }

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use App\Models\Category;
 use App\Models\City;
+use App\Models\Gender;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
@@ -27,6 +28,7 @@ class DoctorFactory extends Factory
     {
         $category = Category::query()->select('id')->inRandomOrder()->first();
         $city = City::query()->select('id')->inRandomOrder()->first();
+        $gender = Gender::query()->select('id')->inRandomOrder()->first();
 
         return [
             'name_en' => fake()->name(),
@@ -42,7 +44,8 @@ class DoctorFactory extends Factory
             'patient_number' => fake()->randomNumber(),
             'experience_years' => fake()->randomNumber(),
             'category_id' => $category->id,
-            'city_id' => $city->id
+            'city_id' => $city->id,
+            'gender_id' => $gender->id
         ];
     }
 

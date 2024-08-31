@@ -44,4 +44,14 @@ class DoctorRepository extends Repository implements DoctorRepositoryInterface
     {
         return $this->doctors();
     }
+
+    public function getUnAvailableDatesTimes($id)
+    {
+        $doctor = $this->model::find($id);
+        if ($doctor)
+        {
+            return $doctor->bookings;
+        }
+        return null;
+    }
 }

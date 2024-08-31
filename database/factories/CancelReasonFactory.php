@@ -24,8 +24,8 @@ class CancelReasonFactory extends Factory
     public function definition(): array
     {
         return [
-            'name_en' => fake()->name(),
-            'name_ar' => fake()->name(),
+            'name_en' => fake()->sentence(),
+            'name_ar' => fake()->sentence(),
         ];
     }
 

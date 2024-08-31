@@ -22,6 +22,7 @@ class DependantResource extends JsonResource
                     'address' => $this->address,
                     'lat' => $this->lat,
                     'lng' => $this->lng,
+                    'relation' => $this->relation,
                     'gender' => new GenderResource($this->gender),
                     'image' => $this->image_url,
         ];

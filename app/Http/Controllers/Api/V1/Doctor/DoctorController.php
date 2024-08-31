@@ -55,5 +55,10 @@ class DoctorController extends Controller
         return $this->doctor->unLikeDoctor($request);
     }
 
+    public function getUnAvailableDatesTimes($id)
+    {
+        return $this->doctor->getUnAvailableDatesTimes($id);
+    }
+
 
 }

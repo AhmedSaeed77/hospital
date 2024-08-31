@@ -34,7 +34,71 @@ class DoctorTimeSeeder extends Seeder
                                         'to' => '17:00'
                                     ]);
                 DoctorTime::create([
+                                        'doctor_id' => 2,
+                                        'day_ar' => $translations['ar'],
+                                        'day_en' => $translations['en'],
+                                        'day_index' => $translations['index'],
+                                        'from' => '09:00',
+                                        'to' => '17:00'
+                                    ]);
+                DoctorTime::create([
+                                        'doctor_id' => 3,
+                                        'day_ar' => $translations['ar'],
+                                        'day_en' => $translations['en'],
+                                        'day_index' => $translations['index'],
+                                        'from' => '09:00',
+                                        'to' => '17:00'
+                                    ]);
+                DoctorTime::create([
+                                        'doctor_id' => 4,
+                                        'day_ar' => $translations['ar'],
+                                        'day_en' => $translations['en'],
+                                        'day_index' => $translations['index'],
+                                        'from' => '09:00',
+                                        'to' => '17:00'
+                                    ]);
+                DoctorTime::create([
+                                        'doctor_id' => 5,
+                                        'day_ar' => $translations['ar'],
+                                        'day_en' => $translations['en'],
+                                        'day_index' => $translations['index'],
+                                        'from' => '09:00',
+                                        'to' => '17:00'
+                                    ]);
+                DoctorTime::create([
+                                        'doctor_id' => 6,
+                                        'day_ar' => $translations['ar'],
+                                        'day_en' => $translations['en'],
+                                        'day_index' => $translations['index'],
+                                        'from' => '09:00',
+                                        'to' => '17:00'
+                                    ]);
+                DoctorTime::create([
+                                        'doctor_id' => 7,
+                                        'day_ar' => $translations['ar'],
+                                        'day_en' => $translations['en'],
+                                        'day_index' => $translations['index'],
+                                        'from' => '09:00',
+                                        'to' => '17:00'
+                                    ]);
+                DoctorTime::create([
+                                        'doctor_id' => 8,
+                                        'day_ar' => $translations['ar'],
+                                        'day_en' => $translations['en'],
+                                        'day_index' => $translations['index'],
+                                        'from' => '09:00',
+                                        'to' => '17:00'
+                                    ]);
+                DoctorTime::create([
                                         'doctor_id' => 9,
+                                        'day_ar' => $translations['ar'],
+                                        'day_en' => $translations['en'],
+                                        'day_index' => $translations['index'],
+                                        'from' => '09:00',
+                                        'to' => '17:00'
+                                    ]);
+                DoctorTime::create([
+                                        'doctor_id' => 10,
                                         'day_ar' => $translations['ar'],
                                         'day_en' => $translations['en'],
                                         'day_index' => $translations['index'],

@@ -18,14 +18,24 @@ class InfoService
 
     public function __invoke()
     {
-        $data['facebook'] = $this->repository->getValue(['facebook']);
-        $data['insta'] = $this->repository->getValue(['insta']);
-        $data['linkedin'] = $this->repository->getValue(['linkedin']);
-        $data['twitter'] = $this->repository->getValue(['twitter']);
-        $data['phone'] = $this->repository->getValue(['phone']);
-        $data['location'] = $this->repository->getValue(['location']);
-        $data['email'] = $this->repository->getValue(['email']);
-        $data['fax'] = $this->repository->getValue(['fax']);
-        return $this->returnData('data',$data);
+        // $data['facebook'] = $this->repository->getValue(['facebook']);
+        // $data['twitter'] = $this->repository->getValue(['twitter']);
+        // $data['whatsapp'] = $this->repository->getValue(['whatsapp']);
+        // return $this->returnData('data',$data);
+
+        $data = $this->repository->getAll();
+        $result = [];
+        foreach ($data as $item)
+        {
+            if($item['type'] =='image')
+            {
+                $result[$item['key']] = url($item['value']);
+            }
+            else
+            {
+                $result[$item['key']] = $item['value'];
+            }
+        }
+        return $this->responseSuccess(data: $result);
     }
 }

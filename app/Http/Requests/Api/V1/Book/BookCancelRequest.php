@@ -23,7 +23,7 @@ class BookCancelRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'reason' => ['required', 'string'],
+            'reason_id' => ['required', Rule::exists('cancel_reasons','id')],
         ];
     }
 }

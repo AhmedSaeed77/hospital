@@ -20,4 +20,9 @@ class Rate extends Model
     {
         return $this->belongsTo(Doctor::class,'doctor_id');
     }
+
+    public function booking()
+    {
+        return $this->belongsTo(Book::class,'book_id');
+    }
 }

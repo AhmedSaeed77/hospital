@@ -23,8 +23,11 @@ class BookUpateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'time' => ['required', 'regex:/^([01]?[0-9]|2[0-3]):[0-5][0-9]$/'],
-            'date' => ['required', 'date'],
+            'doctor_id' => ['nullable' , Rule::exists('doctors','id')] ,
+            'time' => ['nullable', 'regex:/^([01]?[0-9]|2[0-3]):[0-5][0-9]$/'],
+            'date' => ['nullable', 'date'],
+            'description' => ['nullable', 'string'],
+            'dependant_id' => ['nullable' , Rule::exists('users','id')] ,
         ];
     }
 }

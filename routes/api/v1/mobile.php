@@ -58,8 +58,9 @@ Route::post('contact-us', [ContactUsController::class, 'store']);
 Route::group(['prefix' => 'doctors','controller' => DoctorController::class], function () {
     Route::get('/', 'index');
     Route::get('/{id}', 'show');
-    Route::get('/{id}/qualifications', 'getQualifications');
-    Route::get('/{id}/rates', 'getRates');
+    Route::get('/{id}/qualifications_and_experience', 'getQualifications');
+    Route::get('/{id}/ratings', 'getRates');
+    Route::get('/{id}/unavailable_dates_times', 'getUnAvailableDatesTimes');
     Route::get('popular/doctor', 'getPopular');
     Route::get('like/doctor', 'getLiked');
     Route::post('like', 'likeDoctor');

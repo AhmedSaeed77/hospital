@@ -26,6 +26,7 @@ class RateRequest extends FormRequest
             'rate' => ['required', 'numeric'],
             'message' => ['required', 'string'],
             'doctor_id' => ['required' , Rule::exists('doctors','id')] ,
+            'book_id' => ['required' , Rule::exists('books','id')] ,
         ];
     }
 }

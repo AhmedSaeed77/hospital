@@ -5,7 +5,7 @@ namespace App\Http\Enums;
 enum OrderStatus : string
 {
     use Enumable;
-    case COMING = 'coming';
+    case UPCOMING = 'upcoming';
     case COMPLETED = 'completed';
     case CANCELED = 'canceled';
 
