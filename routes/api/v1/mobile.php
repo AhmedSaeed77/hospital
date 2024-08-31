@@ -16,6 +16,14 @@ use App\Http\Controllers\Api\V1\Info\InfoSiteController;
 use App\Http\Controllers\Api\V1\Structure\TermsAndConditionsController;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/run-composer-install', function () {
+    // Execute the composer install command
+    $output = shell_exec('composer install 2>&1');
+
+    // Return the output as a response
+    return nl2br($output);
+});
+
 Route::group(['prefix' => 'auth', 'controller' => AuthController::class], function () {
     Route::group(['prefix' => 'sign'], function () {
         Route::post('in', 'signIn');
