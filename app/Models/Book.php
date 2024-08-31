@@ -11,10 +11,10 @@ class Book extends Model
 
     protected $guarded = [];
 
-    public function bookNumber(): Attribute
+    public function hasRate(): Attribute
     {
         return Attribute::make(
-            get: fn() => '#' . 9999 + $this->id,
+            get: fn () => $this->rate()->exists()
         );
     }
 
@@ -31,5 +31,10 @@ class Book extends Model
     public function parent()
     {
         return $this->belongsTo(User::class, 'parent_id');
+    }
+
+    public function rate()
+    {
+        return $this->hasOne(Rate::class,'book_id');
     }
 }

@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Resources\V1\Rate;
-use App\Http\Resources\V1\User\UserProfileResource;
+namespace App\Http\Resources\V1\Doctor;
+use App\Http\Resources\V1\Rate\RateUserResource;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class RateResource extends JsonResource
+class DoctorUnAvailableDateTimeResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,9 +16,8 @@ class RateResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'rate' => $this->rate,
-            'message' => $this->message,
-            'user' => new UserProfileResource($this->user),
+            'date' => $this->date,
+            'time' => $this->time,
         ];
     }
 }

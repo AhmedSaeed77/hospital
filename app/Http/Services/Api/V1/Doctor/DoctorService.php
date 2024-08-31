@@ -19,6 +19,8 @@ use App\Http\Resources\V1\Doctor\OneDoctorResource;
 use App\Http\Resources\V1\Doctor\DoctorLikedResource;
 use App\Http\Resources\V1\Doctor\QualificationExperienceResource;
 use App\Http\Resources\V1\Doctor\RateDoctorsResource;
+use App\Http\Resources\V1\Doctor\DoctorTimeResource;
+use App\Http\Resources\V1\Doctor\DoctorUnAvailableDateTimeResource;
 use Illuminate\Support\Facades\Hash;
 
 abstract class DoctorService extends PlatformService
@@ -99,6 +101,9 @@ abstract class DoctorService extends PlatformService
         }
     }
 
-
+    public function getUnAvailableDatesTimes($id)
+    {
+        return $this->getService->handle(DoctorUnAvailableDateTimeResource::class, $this->doctorRepository, 'getUnAvailableDatesTimes',parameters:[$id]);
+    }
 
 }

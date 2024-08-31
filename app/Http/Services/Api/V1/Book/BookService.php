@@ -42,8 +42,12 @@ abstract class BookService extends PlatformService
         DB::beginTransaction();
         try
         {
-            $data = $request->validated();
+            $data = $request->except('dependant_id');
             $data['user_id'] = auth()->user()->id;
+            if($request->dependant_id)
+            {
+                $data['parent_id'] = $request->dependant_id;
+            }
             $book = $this->bookRepository->create($data);
             DB::commit();
             return $this->responseSuccess(message: __('messages.created successfully'), data: new BookResource($book, false));
@@ -61,7 +65,8 @@ abstract class BookService extends PlatformService
         try
         {
             $book = $this->bookRepository->getById($id);
-            $data = $request->validated();
+            $data = $request->except('dependant_id');
+            $data['parent_id'] = $request->dependant_id ?? null;
             $book = $this->bookRepository->update($book->id,$data);
             DB::commit();
             return $this->responseSuccess(message: __('messages.updated successfully'));
@@ -80,7 +85,7 @@ abstract class BookService extends PlatformService
         {
             $book = $this->bookRepository->getById($id);
             $data = $request->validated();
-            $book = $this->bookRepository->update($book->id,["status" => "CANCELED" , "reason" => $request->reason ]);
+            $book = $this->bookRepository->update($book->id,["status" => "CANCELED" , "cancel_reason_id" => $request->reason_id ]);
             DB::commit();
             return $this->responseSuccess(message: __('messages.canceled successfully'));
         }

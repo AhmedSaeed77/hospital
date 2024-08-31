@@ -25,7 +25,7 @@ class BookRequest extends FormRequest
         return [
             'doctor_id' => ['required' , Rule::exists('doctors','id')] ,
 //            'user_id' => ['required' , Rule::exists('users','id')] ,
-            'parent_id' => ['nullable' , Rule::exists('users','id')] ,
+            'dependant_id' => ['nullable' , Rule::exists('users','id')] ,
             'description' => ['required', 'string'],
             'time' => ['required', 'regex:/^([01]?[0-9]|2[0-3]):[0-5][0-9]$/'],
             'date' => ['required', 'date'],

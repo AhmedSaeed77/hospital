@@ -37,24 +37,6 @@
                                 <!-- Hero Section -->
 
                                 <div class="row">
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <label for="exampleInputName1">@lang('dashboard.title') @lang('dashboard.ar')</label>
-                                            <input name="ar[terms_and_conditions][title]" type="text" class="form-control"
-                                                id="exampleInputName1" value="{{ $content['ar']['terms_and_conditions']['title'] ?? '' }}"
-                                                placeholder="" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">@lang('dashboard.title') @lang('dashboard.en')</label>
-                                            <input name="en[terms_and_conditions][title]" type="text" class="form-control"
-                                                id="exampleInputEmail1" value="{{ $content['en']['terms_and_conditions']['title'] ?? '' }}"
-                                                placeholder="" required>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="exampleInputContent2">@lang('dashboard.description')  @lang('dashboard.ar')</label>
