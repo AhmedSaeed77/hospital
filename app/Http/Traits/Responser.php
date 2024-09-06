@@ -17,8 +17,8 @@ trait Responser
     private function responseFail($status = Http::UNPROCESSABLE_ENTITY, $message = 'Error', $data = []) {
         return response()->json([
             'status' => $status,
-            'message' => $message,
-            'data' => $data
+            'message' => $data,
+            'data' => null
         ], $status);
     }
 
