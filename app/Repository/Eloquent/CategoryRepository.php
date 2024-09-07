@@ -13,4 +13,9 @@ class CategoryRepository extends Repository implements CategoryRepositoryInterfa
     {
         parent::__construct($model);
     }
+
+    public function getAllCategoriesDashboard($perPage)
+    {
+        return $this->model::orderBy('created_at', 'desc')->paginate($perPage);
+    }
 }

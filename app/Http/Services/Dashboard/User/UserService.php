@@ -13,7 +13,7 @@ class UserService
 
     public function index()
     {
-        $users = $this->userRepository->paginate(25);
+        $users = $this->userRepository->getAllUsersDashboard(25);
         return view('dashboard.site.users.index', compact('users'));
     }
 

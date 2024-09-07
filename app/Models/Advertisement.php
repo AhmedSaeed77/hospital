@@ -19,6 +19,16 @@ class Advertisement extends Model
         );
     }
 
+    public function typeValue() : Attribute
+    {
+        return Attribute::get(function () {
+            if($this->type == 'image')
+                return __('dashboard.image');
+            else
+                return __('dashboard.doctor');
+        });
+    }
+
     public function doctor()
     {
         return $this->belongsTo(Doctor::class,'doctor_id');
