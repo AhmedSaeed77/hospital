@@ -13,4 +13,9 @@ class AdvertisementRepository extends Repository implements AdvertisementReposit
     {
         parent::__construct($model);
     }
+
+    public function getAllAdvertisementsDashboard($perPage)
+    {
+        return $this->model::orderBy('created_at', 'desc')->paginate($perPage);
+    }
 }

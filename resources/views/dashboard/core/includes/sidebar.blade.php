@@ -29,6 +29,24 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item  {{ in_array(request()->route()->getName(),['categories.index', 'categories.create', 'categories.edit', 'categories.show'])? 'menu-open': '' }}">
+                    <a href="{{ route('categories.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-circle"></i>
+                        <p>
+                            @lang('dashboard.categories')
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item  {{ in_array(request()->route()->getName(),['cities.index', 'cities.create', 'cities.edit', 'cities.show'])? 'menu-open': '' }}">
+                    <a href="{{ route('cities.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-circle"></i>
+                        <p>
+                            @lang('dashboard.cities')
+                        </p>
+                    </a>
+                </li>
+
                 <li class="nav-item  {{ in_array(request()->route()->getName(),['users.index', 'users.create', 'users.edit', 'users.show'])? 'menu-open': '' }}">
                     <a href="{{ route('users.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-circle"></i>
@@ -37,6 +55,35 @@
                         </p>
                     </a>
                 </li>
+
+                <li class="nav-item  {{ in_array(request()->route()->getName(),['advertisements.index', 'advertisements.create', 'advertisements.edit', 'advertisements.show'])? 'menu-open': '' }}">
+                    <a href="{{ route('advertisements.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-circle"></i>
+                        <p>
+                            @lang('dashboard.advertisements')
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item  {{ in_array(request()->route()->getName(),['cancel-reasons.index', 'cancel-reasons.create', 'cancel-reasons.edit', 'cancel-reasons.show'])? 'menu-open': '' }}">
+                    <a href="{{ route('cancel-reasons.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-circle"></i>
+                        <p>
+                            @lang('dashboard.cancel-reasons')
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item  {{ in_array(request()->route()->getName(),['genders.index', 'genders.create', 'genders.edit', 'genders.show'])? 'menu-open': '' }}">
+                    <a href="{{ route('genders.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-circle"></i>
+                        <p>
+                            @lang('dashboard.genders')
+                        </p>
+                    </a>
+                </li>
+
+
 
                 <li class="nav-item  {{ in_array(request()->route()->getName(),['infos.edit'])? 'menu-open': '' }} {{ Route::currentRouteName()=='infos.edit'?'activeNav':'' }}">
                     <a href="{{ route('infos.edit',auth('web')->user()->id) }}" class="nav-link">
@@ -70,7 +117,7 @@
                                 <p>@lang('dashboard.terms')</p>
                             </a>
                         </li>
-                        
+
                     </ul>
                 </li>
             </ul>

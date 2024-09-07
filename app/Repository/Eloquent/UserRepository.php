@@ -15,6 +15,11 @@ class UserRepository extends Repository implements UserRepositoryInterface
         parent::__construct($model);
     }
 
+    public function getAllUsersDashboard($perPage)
+    {
+        return $this->model::orderBy('created_at', 'desc')->paginate($perPage);
+    }
+
     public function getActiveUsers()
     {
         return $this->model::query()->where('is_active', true);
@@ -28,5 +33,10 @@ class UserRepository extends Repository implements UserRepositoryInterface
     public function getAllDependants($id)
     {
         return $this->model::where('parent_id',$id)->get();
+    }
+
+    public function getAllDependantsDashboard($id,$perPage)
+    {
+        return $this->model::where('parent_id',$id)->orderBy('created_at', 'asc')->paginate($perPage);
     }
 }

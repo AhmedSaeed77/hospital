@@ -43,20 +43,20 @@
                             </div>
                             <div class="card-body">
                                 <div class="col-12">
-                                    <p class="lead">{{$user->name}}</p>
+                                    <p class="lead">{{$user->full_name}}</p>
                                     <div class="table-responsive">
                                         <table class="table">
                                             <tbody>
-                                            @isset($user->name)
+                                            @isset($user->full_name)
                                             <tr>
                                                 <th style="width:50%">@lang('dashboard.Name'):</th>
-                                                <td>{{$user->name}}</td>
+                                                <td>{{$user->full_name}}</td>
                                             </tr>
                                             @endisset
-                                            @isset($user->company)
+                                            @isset($user->image)
                                             <tr>
-                                                <th style="width:50%">@lang('dashboard.company'):</th>
-                                                <td>{{$user->company->t('name')}}</td>
+                                                <th style="width:50%">@lang('dashboard.image'):</th>
+                                                <td><img src="{{ !is_null($user->image) ? url($user->image) : '' }}" style="width: 100px;" /></td>
                                             </tr>
                                             @endisset
                                             @isset($user->email )
@@ -71,16 +71,40 @@
                                                 <td>{{$user->phone}}</td>
                                             </tr>
                                             @endisset
-                                            @isset($user->direct_manager_name)
+                                            @isset($user->birth_name)
                                             <tr>
-                                                <th style="width:50%">@lang('dashboard.direct_manager_name'):</th>
-                                                <td>{{$user->direct_manager_name}}</td>
+                                                <th style="width:50%">@lang('dashboard.birth_name'):</th>
+                                                <td>{{$user->birth_name}}</td>
                                             </tr>
                                             @endisset
-                                            @isset($user->direct_manager_email)
+                                            @isset($user->birth_date)
                                             <tr>
-                                                <th style="width:50%">@lang('dashboard.direct_manager_email'):</th>
-                                                <td>{{$user->direct_manager_email}}</td>
+                                                <th style="width:50%">@lang('dashboard.birth_date'):</th>
+                                                <td>{{$user->birth_date}}</td>
+                                            </tr>
+                                            @endisset
+                                            @isset($user->address)
+                                            <tr>
+                                                <th style="width:50%">@lang('dashboard.address'):</th>
+                                                <td>{{$user->address}}</td>
+                                            </tr>
+                                            @endisset
+                                            @isset($user->lat)
+                                            <tr>
+                                                <th style="width:50%">@lang('dashboard.lat'):</th>
+                                                <td>{{$user->lat}}</td>
+                                            </tr>
+                                            @endisset
+                                            @isset($user->lng)
+                                            <tr>
+                                                <th style="width:50%">@lang('dashboard.lng'):</th>
+                                                <td>{{$user->lng}}</td>
+                                            </tr>
+                                            @endisset
+                                            @isset($user->relation)
+                                            <tr>
+                                                <th style="width:50%">@lang('dashboard.relation'):</th>
+                                                <td>{{$user->relation}}</td>
                                             </tr>
                                             @endisset
                                             </tbody>

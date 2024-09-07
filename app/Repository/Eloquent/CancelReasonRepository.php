@@ -13,4 +13,9 @@ class CancelReasonRepository extends Repository implements CancelReasonRepositor
     {
         parent::__construct($model);
     }
+
+    public function getAllCancelReasonsDashboard($perPage)
+    {
+        return $this->model::orderBy('created_at', 'desc')->paginate($perPage);
+    }
 }

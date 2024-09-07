@@ -24,8 +24,8 @@
                         <div class="card-header">
                             <h3 class="card-title">@lang('dashboard.users')</h3>
                             <div class="card-tools">
-                                <a href="{{ route('users.create') }}"
-                                   class="btn  btn-dark">@lang('dashboard.Create')</a>
+                                {{-- <a href="{{ route('users.create') }}"
+                                   class="btn  btn-dark">@lang('dashboard.Create')</a> --}}
                             </div>
                         </div>
                         <div class="card-body">
@@ -44,13 +44,13 @@
                                 @forelse($users as $user)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $user->name }}</td>
+                                        <td>{{ $user->full_name }}</td>
                                         <td>{{ $user->email }}</td>
                                         <td>{{ $user->phone }}</td>
                                       <td>
                                             <div class="operations-btns" style="">
-                                                <a href="{{ route('users.edit', $user->id) }}"
-                                                   class="btn  btn-dark">@lang('dashboard.Edit')</a>
+                                                <a href="{{ route('dependant.index', $user->id) }}"
+                                                   class="btn  btn-dark">@lang('dashboard.Dependant')</a>
                                                 <a href="{{ route('users.show', $user->id) }}"
                                                    class="btn  btn-dark">@lang('dashboard.Show')</a>
                                                     <button class="btn btn-danger waves-effect waves-light"

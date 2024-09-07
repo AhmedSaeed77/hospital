@@ -79,7 +79,7 @@ class Handler extends ExceptionHandler
     {
         $errors = $e->validator->errors()->all();
         if ($this->isFrontend($request)) {
-            return $request->ajax() ? response()->json($errors, Http::UNPROCESSABLE_ENTITY) : redirect()->back()->withInput($request->validated())->withErrors($errors);
+            return $request->ajax() ? response()->json($errors, Http::UNPROCESSABLE_ENTITY) : redirect()->back()->withInput()->withErrors($errors);
         }
 
         return $this->responseFail(message: 'Validation error', data: $errors);

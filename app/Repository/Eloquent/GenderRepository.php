@@ -13,4 +13,9 @@ class GenderRepository extends Repository implements GenderRepositoryInterface
     {
         parent::__construct($model);
     }
+
+    public function getAllGendersDashboard($perPage)
+    {
+        return $this->model::orderBy('created_at', 'desc')->paginate($perPage);
+    }
 }
