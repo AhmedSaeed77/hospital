@@ -34,7 +34,15 @@ class Doctor extends Model
         );
     }
 
-
+    public function manager()
+    {
+        return $this->belongsTo(Manager::class);
+    }
+    
+    public function gender()
+    {
+        return $this->belongsTo(Gender::class,'gender_id');
+    }
 
     public function category()
     {

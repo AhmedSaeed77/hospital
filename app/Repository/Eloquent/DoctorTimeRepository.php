@@ -13,4 +13,9 @@ class DoctorTimeRepository extends Repository implements DoctorTimeRepositoryInt
     {
         parent::__construct($model);
     }
+
+    public function getAllTimeForDoctor($doctor_id, $perPage)
+    {
+        return $this->model->where('doctor_id', $doctor_id)->paginate($perPage);
+    }
 }

@@ -18,6 +18,19 @@ class Book extends Model
         );
     }
 
+    public function statusValue() : Attribute
+    {
+        return Attribute::get(function ()
+        {
+            if($this->status == 'upcoming')
+                return __('general.coming');
+            elseif($this->status == 'completed')
+                return __('general.completed');
+            else
+                return __('general.canceled');
+        });
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
