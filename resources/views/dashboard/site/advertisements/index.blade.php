@@ -24,8 +24,10 @@
                         <div class="card-header">
                             <h3 class="card-title">@lang('dashboard.advertisements')</h3>
                             <div class="card-tools">
+                                @permission('advertisements-create')
                                 <a href="{{ route('advertisements.create') }}"
                                    class="btn  btn-dark">@lang('dashboard.Create')</a>
+                                   @endpermission
                             </div>
                         </div>
                         <div class="card-body">
@@ -51,13 +53,17 @@
                                         @endif
                                       <td>
                                             <div class="operations-btns" style="">
+                                                @permission('advertisements-update')
                                                 <a href="{{ route('advertisements.edit', $advertisement->id) }}"
                                                    class="btn  btn-dark">@lang('dashboard.Edit')</a>
+                                                   @endpermission
 {{--                                                <a href="{{ route('services.show', $service->id) }}"--}}
 {{--                                                   class="btn  btn-dark">@lang('dashboard.Show')</a>--}}
+                                                    @permission('advertisements-delete')
                                                     <button class="btn btn-danger waves-effect waves-light"
                                                             data-toggle="modal"
                                                             data-target="#delete-modal{{ $loop->iteration }}">@lang('dashboard.delete')</button>
+                                                    @endpermission       
                                                     <div id="delete-modal{{ $loop->iteration }}"
                                                          class="modal fade modal2 " tabindex="-1" role="dialog"
                                                          aria-labelledby="myModalLabel" aria-hidden="true"

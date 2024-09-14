@@ -30,12 +30,12 @@ abstract class AuthService extends PlatformService
             $user = $this->userRepository->first('email',$request->email);
             if($user)
             {
-                return $this->responseFail(message: __('messages.email_is_existing'));
+                return $this->responseFail(data: __('messages.email_is_existing'));
             }
             $user = $this->userRepository->first('phone',$request->phone);
             if($user)
             {
-                return $this->responseFail(message: __('messages.phone_is_existing'));
+                return $this->responseFail(data: __('messages.phone_is_existing'));
             }
             $data = $request->validated();
             if ($request->hasFile('image'))

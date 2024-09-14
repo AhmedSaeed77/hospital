@@ -140,4 +140,17 @@ abstract class Repository implements RepositoryInterface
     {
         return $this->model::query()->whereHasMorph($relation, $class)->get();
     }
+
+    public function count($filters = [])
+    {
+        $query = $this->model::query();
+        if ($filters != []) {
+            foreach ($filters as $column => $value) {
+                if ($column != null && $value != null)
+                    $query->where($column, $value);
+            }
+        }
+
+        return $query->count();
+    }
 }

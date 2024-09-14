@@ -3,6 +3,10 @@
 namespace App\Providers;
 
 
+use App\Repository\DoctorExperienceRepositoryInterface;
+use App\Repository\DoctorQualificationRepositoryInterface;
+use App\Repository\Eloquent\DoctorExperienceRepository;
+use App\Repository\Eloquent\DoctorQualificationRepository;
 use App\Repository\Eloquent\Repository;
 use App\Repository\Eloquent\UserRepository;
 use App\Repository\Eloquent\OtpRepository;
@@ -19,7 +23,15 @@ use App\Repository\Eloquent\StructureRepository;
 use App\Repository\Eloquent\InfoRepository;
 use App\Repository\Eloquent\GenderRepository;
 use App\Repository\Eloquent\CancelReasonRepository;
+use App\Repository\Eloquent\RoleRepository;
+use App\Repository\Eloquent\ManagerRepository;
+use App\Repository\Eloquent\PermissionRepository;
+use App\Repository\Eloquent\SettingsRepository;
 
+use App\Repository\ManagerRepositoryInterface;
+use App\Repository\SettingsRepositoryInterface;
+use App\Repository\RoleRepositoryInterface;
+use App\Repository\PermissionRepositoryInterface;
 use App\Repository\CancelReasonRepositoryInterface;
 use App\Repository\GenderRepositoryInterface;
 use App\Repository\InfoRepositoryInterface;
@@ -48,6 +60,7 @@ class RepositoryServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton(RepositoryInterface::class, Repository::class);
+        $this->app->bind(SettingsRepositoryInterface::class, SettingsRepository::class);
         $this->app->singleton(UserRepositoryInterface::class, UserRepository::class);
         $this->app->singleton(OtpRepositoryInterface::class, OtpRepository::class);
         $this->app->singleton(AdvertisementRepositoryInterface::class, AdvertisementRepository::class);
@@ -63,6 +76,11 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->singleton(InfoRepositoryInterface::class, InfoRepository::class);
         $this->app->singleton(GenderRepositoryInterface::class, GenderRepository::class);
         $this->app->singleton(CancelReasonRepositoryInterface::class, CancelReasonRepository::class);
+        $this->app->singleton(ManagerRepositoryInterface::class, ManagerRepository::class);
+        $this->app->singleton(RoleRepositoryInterface::class, RoleRepository::class);
+        $this->app->singleton(PermissionRepositoryInterface::class, PermissionRepository::class);
+        $this->app->singleton(DoctorExperienceRepositoryInterface::class, DoctorExperienceRepository::class);
+        $this->app->singleton(DoctorQualificationRepositoryInterface::class, DoctorQualificationRepository::class);
     }
 
     /**

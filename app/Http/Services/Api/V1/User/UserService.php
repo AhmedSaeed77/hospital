@@ -10,6 +10,7 @@ use App\Repository\Eloquent\Repository;
 use App\Repository\UserRepositoryInterface;
 use Carbon\Carbon;
 use Exception;
+use App\Http\Resources\V1\User\UserResource;
 use App\Http\Services\Mutual\FileManagerService;
 use Illuminate\Support\Facades\DB;
 use App\Http\Resources\V1\User\UserProfileResource;
@@ -60,7 +61,8 @@ abstract class UserService extends PlatformService
             }
 
             $this->userRepository->update($id, $data);
-            return $this->responseSuccess(message: __('messages.updated successfully'));
+            $user = $this->userRepository->getById($id);
+            return $this->responseSuccess(message: __('messages.updated successfully'), data: new UserResource($user, false));
         }
         catch (\Exception $e)
         {

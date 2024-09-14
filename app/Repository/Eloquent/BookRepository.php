@@ -18,4 +18,9 @@ class BookRepository extends Repository implements BookRepositoryInterface
     {
         return $this->model::query()->where('status', $status)->latest()->get();
     }
+
+    public function getAllBookingsDashboard($perPage)
+    {
+        return $this->model::query()->latest()->paginate($perPage);
+    }
 }

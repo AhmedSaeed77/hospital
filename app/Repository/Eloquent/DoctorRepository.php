@@ -14,6 +14,11 @@ class DoctorRepository extends Repository implements DoctorRepositoryInterface
         parent::__construct($model);
     }
 
+    public function getAllDoctorsDashboard($perPage)
+    {
+        return $this->model::query()->orderBy('created_at', 'desc') ->paginate($perPage);
+    }
+
     public function getAllDoctors()
     {
         return $this->model::query()
