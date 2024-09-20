@@ -18,4 +18,9 @@ class RateRepository extends Repository implements RateRepositoryInterface
     {
         return $this->model::query()->where('user_id', $id)->orderBy('created_at','desc')->get();
     }
+
+    public function getAllDoctorsRates($id)
+    {
+        return $this->model::query()->where('doctor_id', $id)->orderBy('created_at','desc')->get();
+    }
 }

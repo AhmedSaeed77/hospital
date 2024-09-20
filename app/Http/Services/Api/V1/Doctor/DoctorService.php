@@ -10,6 +10,7 @@ use App\Http\Requests\Api\V1\Doctor\LikeDoctorRequest;
 use App\Repository\UserRepositoryInterface;
 use App\Repository\DoctorRepositoryInterface;
 use App\Repository\UserDoctorRepositoryInterface;
+use App\Repository\RateRepositoryInterface;
 use Carbon\Carbon;
 use Exception;
 use App\Http\Services\Mutual\FileManagerService;
@@ -20,6 +21,7 @@ use App\Http\Resources\V1\Doctor\DoctorLikedResource;
 use App\Http\Resources\V1\Doctor\QualificationExperienceResource;
 use App\Http\Resources\V1\Doctor\RateDoctorsResource;
 use App\Http\Resources\V1\Doctor\DoctorTimeResource;
+use App\Http\Resources\V1\Doctor\RateResource;
 use App\Http\Resources\V1\Doctor\DoctorUnAvailableDateTimeResource;
 use Illuminate\Support\Facades\Hash;
 
@@ -29,6 +31,7 @@ abstract class DoctorService extends PlatformService
 
     public function __construct(
         private readonly UserRepositoryInterface             $userRepository,
+        private readonly RateRepositoryInterface             $doctorRateRepository,
         private readonly DoctorRepositoryInterface           $doctorRepository,
         private readonly UserDoctorRepositoryInterface       $userdoctorRepository,
         private readonly FileManagerService                  $fileManagerService,
@@ -54,7 +57,8 @@ abstract class DoctorService extends PlatformService
 
     public function getRates($id)
     {
-        return $this->getService->handle(RateDoctorsResource::class, $this->doctorRepository, 'getById',parameters:[$id],is_instance:true);
+        // return $this->doctorRateRepository->getAllDoctorsRates($id);
+        return $this->getService->handle(RateResource::class, $this->doctorRateRepository, 'getAllDoctorsRates',parameters:[$id]);
     }
 
     public function getPopular()
