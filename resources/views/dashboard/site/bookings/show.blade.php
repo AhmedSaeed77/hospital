@@ -53,6 +53,12 @@
                                                 <td>{{$booking->user->full_name}}</td>
                                             </tr>
                                             @endisset
+                                            @isset($booking->book_number)
+                                            <tr>
+                                                <th style="width:50%">@lang('dashboard.number'):</th>
+                                                <td>{{$booking->book_number}}</td>
+                                            </tr>
+                                            @endisset
                                             @isset($booking->doctor_id)
                                             <tr>
                                                 <th style="width:50%">@lang('dashboard.doctor'):</th>

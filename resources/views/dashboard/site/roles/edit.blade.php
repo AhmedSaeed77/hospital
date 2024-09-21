@@ -74,7 +74,7 @@
                                             {{--                                            @foreach($permission as $p)--}}
                                             <input {{$role->hasPermission($permission->name)?'checked':''}} type="checkbox" name="permissions[]"
                                                    value="{{$permission->id}}" class="mr-3" id="{{$key}}"/>
-                                            <label style="font-size: 20px" for="{{$key}}">{{$permission->display_name}} </label>
+                                            <label style="font-size: 20px" for="{{$key}}">{{$permission->display_name_ar}} </label>
                                             <br>
                                             {{--                                            @endforeach--}}
                                             <hr>

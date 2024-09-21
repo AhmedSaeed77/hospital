@@ -20,6 +20,7 @@ use App\Http\Controllers\Dashboard\Settings\SettingController;
 use App\Http\Controllers\Dashboard\Doctor\DoctorController;
 use App\Http\Controllers\Dashboard\Time\TimeController;
 use App\Http\Controllers\Dashboard\Booking\BookingController;
+use App\Http\Controllers\Dashboard\DoctorBooking\DoctorBookingController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use Illuminate\Support\Facades\Route;
 
@@ -49,7 +50,10 @@ Route::group([
         Route::resource('{doctor_id}/qualifications', QualificationController::class);
         Route::resource('{doctor_id}/times', TimeController::class);
 
+        Route::resource('doctor_bookings', DoctorBookingController::class);
+
         Route::resource('bookings', BookingController::class);
+        Route::get('bookings/change-status/{id}', [BookingController::class,'changeStatus'])->name('bookings.changeStatus');
 
         Route::group(['prefix' => 'structures'], function () {
             Route::resource('about-content', AboutController::class)->only(['index', 'store']);

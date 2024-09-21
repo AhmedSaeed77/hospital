@@ -81,6 +81,16 @@
                     </a>
                 </li>
                 @endpermission
+                @if(auth()->user()->hasRole('doctor'))
+                <li class="nav-item  {{ in_array(request()->route()->getName(),['doctor_bookings.index', 'doctor_bookings.edit', 'doctor_bookings.show'])? 'menu-open': '' }}">
+                    <a href="{{ route('doctor_bookings.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-circle"></i>
+                        <p>
+                            @lang('dashboard.bookings')
+                        </p>
+                    </a>
+                </li>
+                @endpermission
                 @permission('advertisements-read')
                 <li class="nav-item  {{ in_array(request()->route()->getName(),['advertisements.index', 'advertisements.create', 'advertisements.edit', 'advertisements.show'])? 'menu-open': '' }}">
                     <a href="{{ route('advertisements.index') }}" class="nav-link">

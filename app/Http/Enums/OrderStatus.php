@@ -17,7 +17,7 @@ enum OrderStatus : string
     public function t()
     {
         return match ($this) {
-            self::COMING => __('general.coming'),
+            self::COMING => __('general.upcoming'),
             self::COMPLETED => __('general.completed'),
             self::CANCELED => __('general.canceled'),
         };

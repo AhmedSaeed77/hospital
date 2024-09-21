@@ -11,6 +11,13 @@ class Book extends Model
 
     protected $guarded = [];
 
+    public function bookNumber(): Attribute
+    {
+        return Attribute::make(
+            get: fn() => '#' . 9999 + $this->id,
+        );
+    }
+
     public function hasRate(): Attribute
     {
         return Attribute::make(
@@ -23,7 +30,7 @@ class Book extends Model
         return Attribute::get(function ()
         {
             if($this->status == 'upcoming')
-                return __('general.coming');
+                return __('general.upcoming');
             elseif($this->status == 'completed')
                 return __('general.completed');
             else

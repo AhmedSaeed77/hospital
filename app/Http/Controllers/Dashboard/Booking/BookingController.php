@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard\Booking;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Dashboard\Booking\BookingRequest;
+use App\Http\Requests\Dashboard\Booking\changeStatusBookingRequest;
 use App\Http\Services\Dashboard\Booking\BookingService;
 use Illuminate\Http\Request;
 
@@ -36,5 +37,10 @@ class BookingController extends Controller
     public function destroy(string $id)
     {
         return $this->booking->destroy($id);
+    }
+
+    public function changeStatus(changeStatusBookingRequest $request,$id)
+    {
+        return $this->booking->changeStatus($request,$id);
     }
 }

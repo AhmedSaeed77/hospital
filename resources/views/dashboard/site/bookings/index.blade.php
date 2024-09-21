@@ -34,10 +34,12 @@
                                 <thead>
                                 <tr>
                                     <th style="width: 10px">#</th>
+                                    <th>@lang('dashboard.number')</th>
                                     <th>@lang('dashboard.user')</th>
                                     <th>@lang('dashboard.doctor')</th>
                                     <th>@lang('dashboard.date')</th>
                                     <th>@lang('dashboard.time')</th>
+                                    <th>@lang('dashboard.status')</th>
                                     <th>@lang('dashboard.Operations')</th>
                                 </tr>
                                 </thead>
@@ -45,10 +47,19 @@
                                 @forelse($bookings as $booking)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $booking->book_number }}</td>
                                         <td>{{ $booking->user->full_name }}</td>
                                         <td>{{ $booking->doctor->t('name') }}</td>
                                         <td>{{ $booking->date }}</td>
                                         <td>{{ $booking->time }}</td>
+                                        <td>
+                                            <select class="custom-select" id="status_{{ $booking->id }}">
+                                                <option value="" disabled >@lang('dashboard.status')</option>
+                                                <option value="upcoming" {{ $booking->status == 'upcoming' ? 'selected':'' }}>@lang('general.upcoming')</option>
+                                                <option value="completed" {{ $booking->status == 'completed' ? 'selected':''}}>@lang('general.completed')</option>
+                                                <option value="canceled" {{ $booking->status == 'canceled' ? 'selected':''}}>@lang('general.canceled')</option>
+                                            </select>
+                                        </td>
                                       <td>
                                             <div class="operations-btns" style="">
 
@@ -113,5 +124,31 @@
     <!-- /.content -->
 @endsection
 @section('js_addons')
+
+<script>
+    $(document).ready(function() {
+        $('[id^="status_"]').change(function() {
+            var status = $(this).val();
+            var booking_id = $(this).attr('id').split('_')[1];
+            console.log(status);
+            $.ajax({
+                url: '{{ route('bookings.changeStatus', ['id' => '__consultation_id__']) }}'
+                    .replace('__consultation_id__', booking_id),
+                type: 'GET',
+                data: {
+                    status: status,
+                    booking_id: booking_id,
+                    _token: '{{ csrf_token() }}'
+                },
+                success: function(response) {
+                    toastr.success('@lang('messages.updated_successfully')');
+                },
+                error: function(error) {
+                    console.error(error);
+                }
+            });
+        });
+    });
+</script>
 
 @endsection

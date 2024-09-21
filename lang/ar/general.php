@@ -41,7 +41,7 @@ return [
     'deposit' => 'ايداع',
     'withdraw' => 'سحب',
 
-    'coming' => 'جديد',
+    'upcoming' => 'جديد',
     'completed' => 'مكتمل',
     'canceled' => 'الغاء',
 ];

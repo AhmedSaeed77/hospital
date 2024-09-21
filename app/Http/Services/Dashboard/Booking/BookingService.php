@@ -69,4 +69,22 @@ class BookingService
         }
     }
 
+    public function changeStatus($request, $id)
+    {
+        try
+        {
+            DB::beginTransaction();
+            $booking = $this->bookingRepository->getById($id);
+            $data = $request->validated();
+            $this->bookingRepository->update($booking->id, ['status' => $request->status]);
+            DB::commit();
+            return redirect()->route('bookings.index')->with(['success' => __('messages.updated_successfully')]);
+        }
+        catch (\Exception $e)
+        {
+            DB::rollBack();
+            return back()->with(['error' => __('messages.Something went wrong')]);
+        }
+    }
+
 }

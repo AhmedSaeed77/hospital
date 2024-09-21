@@ -2,27 +2,17 @@
 
 namespace App\Http\Services\Dashboard\Doctor;
 
-use App\Repository\CategoryRepositoryInterface;
 use App\Repository\DoctorRepositoryInterface;
 use App\Repository\DoctorTimeRepositoryInterface;
 use App\Repository\GenderRepositoryInterface;
 use App\Repository\CityRepositoryInterface;
-use App\Repository\RoleRepositoryInterface;
-use App\Repository\ManagerRepositoryInterface;
 use App\Http\Services\Mutual\FileManagerService;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 
-class DoctorService
+class DoctorBookingService
 {
     public function __construct(
         private readonly DoctorRepositoryInterface $doctorRepository,
-        private readonly DoctorTimeRepositoryInterface $doctorTimeRepository,
-        private readonly CategoryRepositoryInterface $categoryRepository,
-        private readonly GenderRepositoryInterface $genderRepository,
-        private readonly CityRepositoryInterface $cityRepository,
-        private readonly RoleRepositoryInterface $roleRepository,
-        private readonly ManagerRepositoryInterface $managerRepositery,
         private readonly FileManagerService  $fileManagerService,
         )
     {
@@ -30,8 +20,9 @@ class DoctorService
 
     public function index()
     {
-        $doctors = $this->doctorRepository->getAllDoctorsDashboard(10);
-        return view('dashboard.site.doctors.index', compact('doctors'));
+        $doctor = $this->doctorRepository->getDoctor(auth()->user()->id);
+        // return $doctor;
+        return view('dashboard.site.doctors.doctor_booking', compact('doctor'));
     }
 
     public function create()
@@ -39,8 +30,7 @@ class DoctorService
         $categories = $this->categoryRepository->getAll();
         $genders = $this->genderRepository->getAll();
         $cities = $this->cityRepository->getAll();
-        $roles = $this->roleRepository->getAll();
-        return view('dashboard.site.doctors.create',compact('categories','genders','cities','roles'));
+        return view('dashboard.site.doctors.create',compact('categories','genders','cities'));
     }
 
     public function store($request)
@@ -48,22 +38,13 @@ class DoctorService
         try
         {
             DB::beginTransaction();
-            $data = $request->except('name','email','password','password_confirmation','phone','role_id');
+            $data = $request->validated();
             if ($request->hasFile('image'))
             {
                 $data['image'] = $this->fileManagerService->handle("image", "doctor/images");
             }
             $doctor = $this->doctorRepository->create($data);
             $this->storAt($doctor->id);
-            $role = $this->roleRepository->getById($request->role_id);
-            $manager = $this->managerRepositery->create([
-                'name' => $request->name,
-                'email' => $request->email,
-                'phone' => $request->phone,
-                'password' => Hash::make($request->password),
-            ]);
-            $manager->addRole($role->id);
-            $this->doctorRepository->update($doctor->id,['manager_id' => $manager->id]);
             DB::commit();
             return redirect()->route('doctors.index')->with(['success' => __('messages.created_successfully')]);
         }

@@ -28,6 +28,7 @@ return [
             'roles' => 'c,r,u,d',
             'bookings' => 'c,r,u,d',
             'structure' => 'r,u',
+            'doctors' => 'c,r,u,d',
         ],
         'admin' => [
             'dashboard' => 'r',

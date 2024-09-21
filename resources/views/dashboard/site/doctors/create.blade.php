@@ -222,6 +222,82 @@
                                     @enderror
                                 </div>
 
+                                <hr>
+                                <label for="exampleInputName1">@lang('dashboard.profile')</label>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputName1">@lang('dashboard.name')</label>
+                                            <input name="name" type="text" class="form-control"
+                                                   id="exampleInputName1"
+                                                   value="{{ old('name') }}" placeholder="@lang('dashboard.name')">
+                                        </div>
+                                    </div>
+                                    @error('name')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputName1">@lang('dashboard.Email')</label>
+                                            <input name="email" type="text" class="form-control"
+                                                   id="exampleInputName1"
+                                                   value="{{ old('email') }}" placeholder="@lang('dashboard.Email')" >
+                                        </div>
+                                    </div>
+                                    @error('email')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputName1">@lang('dashboard.phone')</label>
+                                            <input name="phone" type="text" class="form-control"
+                                                   id="exampleInputName1"
+                                                   value="{{ old('phone') }}" placeholder="@lang('dashboard.phone')">
+                                        </div>
+                                    </div>
+                                    @error('phone')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+                                    
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">@lang('dashboard.Password')</label>
+                                            <input name="password" type="password" class="form-control"
+                                                   id="exampleInputPassword1" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label
+                                                for="exampleInputPassword2">@lang('dashboard.Confirm Password')</label>
+                                            <input name="password_confirmation" type="password" class="form-control"
+                                                   id="exampleInputPassword2" placeholder="">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">@lang('dashboard.role')</label>
+                                            <select name="role_id"  class="form-control" required>
+                                                <option selected disabled>@lang('dashboard.Choose_role')</option>
+                                                @foreach($roles as $role)
+
+                                                    <option value="{{ $role->id }}">{{ $role->t('display_name') }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                             <!-- /.card-body -->
                     <div class="card-footer">
