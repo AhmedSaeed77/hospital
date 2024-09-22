@@ -87,20 +87,33 @@ class DoctorService
         $categories = $this->categoryRepository->getAll();
         $genders = $this->genderRepository->getAll();
         $cities = $this->cityRepository->getAll();
-        return view('dashboard.site.doctors.edit', compact('doctor','categories','genders','cities'));
+        $roles = $this->roleRepository->getAll();
+        $manager = $this->managerRepositery->getById($doctor->manager_id);
+        return view('dashboard.site.doctors.edit', compact('doctor','categories','genders','cities','roles','manager'));
     }
 
     public function update($request, $id)
     {
         try
         {
-            $user=$this->doctorRepository->getById($id);
-            $data = $request->validated();
+            $docotor = $this->doctorRepository->getById($id);
+            $data = $request->except('name','email','password','password_confirmation','phone','role_id');
             if ($request->hasFile('image'))
             {
                 $data['image'] = $this->fileManagerService->handle("image", "doctor/images");
             }
             $this->doctorRepository->update($id, $data);
+            $role = $this->roleRepository->getById($request->role_id);
+            $manager = $this->managerRepositery->getById($docotor->manager_id);
+            $this->managerRepositery->update($manager->id,[
+                                                            'name' => $request->name,
+                                                            'email' => $request->email,
+                                                            'phone' => $request->phone,
+                                                            'password' => Hash::make($request->password),
+                                                        ]);
+            $manager->removeRole($role->name);
+            $manager->addRole($role->id);
+            $this->doctorRepository->update($docotor->id,['manager_id' => $manager->id]);
             return redirect()->route('doctors.index')->with(['success' => __('messages.updated_successfully')]);
         }
         catch (\Exception $e)

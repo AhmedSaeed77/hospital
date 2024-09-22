@@ -45,21 +45,20 @@ class DoctorRequest extends FormRequest
                         'mimes:jpeg,png,jpg,gif,svg',
                         'max:4096'
                     ],
-                    
+
             'name' => 'required|string',
             'email' => [
                 'required',
-                'email:rfc,dns',
                 $this->method() == 'POST'
-                    ? Rule::unique('managers', 'email')
-                    : Rule::unique('managers', 'email')->ignore($this->id, 'id')
+                    ? Rule::unique('managers')
+                    // : Rule::unique('managers')->ignore($this->id, 'id')
+                    : 'sometimes'
             ],
             'phone' => [
-                'required',
                 new Phone,
                 $this->method() == 'POST'
                     ? Rule::unique('managers', 'phone')
-                    : Rule::unique('managers', 'phone')->ignore($this->id, 'id'),
+                    : 'sometimes',
             ],
             'password' => $this->method() == 'POST'?Password::min(8)->required():'nullable',
             'image' => ['nullable', 'exclude', 'image', 'mimes:jpg,jpeg,png', 'max:2048'],

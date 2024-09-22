@@ -38,8 +38,15 @@
                 <div class="container-fluid">
                     <div class="col-12">
                         <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title">@lang('dashboard.doctors')</h3>
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h3 class="card-title mb-0">@lang('dashboard.doctors')</h3>
+                                <div>
+                                    <a href="{{ route('times.index', auth()->user()->id) }}" class="btn btn-dark">@lang('dashboard.times')</a>
+                                    <a href="{{ route('experiences.index', auth()->user()->id) }}" class="btn btn-dark">@lang('dashboard.experiences')</a>
+                                    <a href="{{ route('qualifications.index', auth()->user()->id) }}" class="btn btn-dark">@lang('dashboard.qualifications')</a>
+                                    <a href="{{ route('doctors.edit', auth()->user()->id) }}" class="btn btn-dark">@lang('dashboard.Edit')</a>
+                                    <a href="{{ route('doctors.bookings', auth()->user()->id) }}" class="btn btn-dark">@lang('dashboard.bookings')</a>
+                                </div>
                             </div>
                             <div class="card-body">
                                 <div class="col-12">

@@ -33,4 +33,9 @@ class DoctorBookingController extends Controller
         return $this->doctorBooking->update($request, $id);
     }
 
+    public function getAllBookingForDoctor($id)
+    {
+        return $this->doctorBooking->getAllBookingForDoctor($id);
+    }
+
 }

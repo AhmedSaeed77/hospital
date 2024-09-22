@@ -51,6 +51,7 @@ Route::group([
         Route::resource('{doctor_id}/times', TimeController::class);
 
         Route::resource('doctor_bookings', DoctorBookingController::class);
+        Route::get('doctors/bookings/{id}', [DoctorBookingController::class,'getAllBookingForDoctor'])->name('doctors.bookings');
 
         Route::resource('bookings', BookingController::class);
         Route::get('bookings/change-status/{id}', [BookingController::class,'changeStatus'])->name('bookings.changeStatus');

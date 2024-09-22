@@ -6,6 +6,7 @@ use App\Repository\DoctorRepositoryInterface;
 use App\Repository\DoctorTimeRepositoryInterface;
 use App\Repository\GenderRepositoryInterface;
 use App\Repository\CityRepositoryInterface;
+use App\Repository\BookRepositoryInterface;
 use App\Http\Services\Mutual\FileManagerService;
 use Illuminate\Support\Facades\DB;
 
@@ -13,6 +14,7 @@ class DoctorBookingService
 {
     public function __construct(
         private readonly DoctorRepositoryInterface $doctorRepository,
+        private readonly BookRepositoryInterface $bookRepository,
         private readonly FileManagerService  $fileManagerService,
         )
     {
@@ -21,8 +23,13 @@ class DoctorBookingService
     public function index()
     {
         $doctor = $this->doctorRepository->getDoctor(auth()->user()->id);
-        // return $doctor;
         return view('dashboard.site.doctors.doctor_booking', compact('doctor'));
+    }
+
+    public function getAllBookingForDoctor($id)
+    {
+        $bookings = $this->bookRepository->getAllBookingForDoctor($id);
+        return view('dashboard.site.doctors.bookingfordoctor', compact('bookings'));
     }
 
     public function create()

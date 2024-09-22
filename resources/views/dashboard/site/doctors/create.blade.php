@@ -262,7 +262,19 @@
                                     @error('phone')
                                     <div class="text-danger">{{ $message }}</div>
                                     @enderror
-                                    
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">@lang('dashboard.role')</label>
+                                            <select name="role_id"  class="form-control" required>
+                                                <option selected disabled>@lang('dashboard.Choose_role')</option>
+                                                @foreach($roles as $role)
+
+                                                    <option value="{{ $role->id }}">{{ $role->t('display_name') }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+
                                 </div>
 
                                 <div class="row">
@@ -279,21 +291,6 @@
                                                 for="exampleInputPassword2">@lang('dashboard.Confirm Password')</label>
                                             <input name="password_confirmation" type="password" class="form-control"
                                                    id="exampleInputPassword2" placeholder="">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <label for="exampleInputPassword1">@lang('dashboard.role')</label>
-                                            <select name="role_id"  class="form-control" required>
-                                                <option selected disabled>@lang('dashboard.Choose_role')</option>
-                                                @foreach($roles as $role)
-
-                                                    <option value="{{ $role->id }}">{{ $role->t('display_name') }}</option>
-                                                @endforeach
-                                            </select>
                                         </div>
                                     </div>
                                 </div>

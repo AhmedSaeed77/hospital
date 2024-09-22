@@ -9,6 +9,7 @@
                     <h1>@lang('dashboard.Home')</h1>
                     <div class="card-body">
                         <div class="row">
+                            @if(!auth()->user()->hasRole('doctor'))
                             <div class="col-12 col-sm-4">
                                 <div class="info-box bg-dark">
                                     <div class="info-box-content">
@@ -20,6 +21,8 @@
                                     </div>
                                 </div>
                             </div>
+                            @endif
+                            @if(!auth()->user()->hasRole('doctor'))
                             <div class="col-12 col-sm-4">
                                 <div class="info-box bg-dark">
                                     <div class="info-box-content">
@@ -31,6 +34,8 @@
                                     </div>
                                 </div>
                             </div>
+                            @endif
+                            @if(!auth()->user()->hasRole('doctor'))
                             <div class="col-12 col-sm-4">
                                 <div class="info-box bg-dark">
                                     <div class="info-box-content">
@@ -42,6 +47,8 @@
                                     </div>
                                 </div>
                             </div>
+                            @endif
+                            @if(!auth()->user()->hasRole('doctor'))
                             <div class="col-12 col-sm-4">
                                 <div class="info-box bg-dark">
                                     <div class="info-box-content">
@@ -53,6 +60,8 @@
                                     </div>
                                 </div>
                             </div>
+                            @endif
+                            @if(!auth()->user()->hasRole('doctor'))
                             <div class="col-12 col-sm-4">
                                 <div class="info-box bg-dark">
                                     <div class="info-box-content">
@@ -64,6 +73,8 @@
                                     </div>
                                 </div>
                             </div>
+                            @endif
+                            @if(!auth()->user()->hasRole('doctor'))
                             <div class="col-12 col-sm-4">
                                 <div class="info-box bg-dark">
                                     <div class="info-box-content">
@@ -75,6 +86,8 @@
                                     </div>
                                 </div>
                             </div>
+                            @endif
+                            @if(!auth()->user()->hasRole('doctor'))
                             <div class="col-12 col-sm-4">
                                 <div class="info-box bg-dark">
                                     <div class="info-box-content">
@@ -86,6 +99,20 @@
                                     </div>
                                 </div>
                             </div>
+                            @endif
+                            @if(auth()->user()->hasRole('doctor'))
+                            <div class="col-12 col-sm-4">
+                                <div class="info-box bg-dark">
+                                    <div class="info-box-content">
+                                        <span
+                                            class="info-box-text text-center">@lang('dashboard.bookings')</span>
+                                        <span
+                                            class="info-box-number text-center mb-0">{{ App\Models\Book::where('doctor_id',auth()->user()->id)->count() }}</span>
+
+                                    </div>
+                                </div>
+                            </div>
+                            @endif
                         </div>
                     </div>
 

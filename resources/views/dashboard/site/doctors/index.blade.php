@@ -49,54 +49,40 @@
                                         <td>{{ $doctor->t('name') }}</td>
                                         <td>{{ $doctor->gender->t('name') }}</td>
                                         <td><img src="{{ !is_null($doctor->image) ? url($doctor->image) : '' }}" style="width: 100px;" /></td>
-                                      <td>
-                                            <div class="operations-btns" style="">
-                                                <a href="{{ route('times.index', $doctor->id) }}"
-                                                   class="btn  btn-dark">@lang('dashboard.times')</a>
-                                                   <a href="{{ route('experiences.index', $doctor->id) }}"
-                                                   class="btn  btn-dark">@lang('dashboard.experiences')</a>
-                                                <a href="{{ route('qualifications.index', $doctor->id) }}"
-                                                   class="btn  btn-dark">@lang('dashboard.qualifications')</a>
+                                        <td>
+                                            <div class="operations-btns" style="display: flex; gap: 10px; justify-content: center; align-items: center;">
+                                                <a href="{{ route('times.index', $doctor->id) }}" class="btn btn-dark">@lang('dashboard.times')</a>
+                                                <a href="{{ route('experiences.index', $doctor->id) }}" class="btn btn-dark">@lang('dashboard.experiences')</a>
+                                                <a href="{{ route('qualifications.index', $doctor->id) }}" class="btn btn-dark">@lang('dashboard.qualifications')</a>
+
                                                 @permission('doctors-update')
-                                                <a href="{{ route('doctors.edit', $doctor->id) }}"
-                                                   class="btn  btn-dark">@lang('dashboard.Edit')</a>
+                                                <a href="{{ route('doctors.edit', $doctor->id) }}" class="btn btn-dark">@lang('dashboard.Edit')</a>
                                                 @endpermission
+
                                                 @permission('doctors-delete')
-                                                    <button class="btn btn-danger waves-effect waves-light"
-                                                            data-toggle="modal"
-                                                            data-target="#delete-modal{{ $loop->iteration }}">@lang('dashboard.delete')</button>
+                                                <button class="btn btn-danger" data-toggle="modal" data-target="#delete-modal{{ $loop->iteration }}">@lang('dashboard.delete')</button>
                                                 @endpermission
-                                                    <div id="delete-modal{{ $loop->iteration }}"
-                                                         class="modal fade modal2 " tabindex="-1" role="dialog"
-                                                         aria-labelledby="myModalLabel" aria-hidden="true"
-                                                         style="display: none;">
-                                                        <div class="modal-dialog">
-                                                            <div class="modal-content float-left">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title">@lang('dashboard.confirm_delete')</h5>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <p>@lang('dashboard.sure_delete')</p>
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" data-dismiss="modal"
-                                                                            class="btn btn-dark waves-effect waves-light m-l-5 mr-1 ml-1">
-                                                                        @lang('dashboard.close')
-                                                                    </button>
-                                                                    <form
-                                                                        action="{{ route('doctors.destroy', $doctor->id) }}"
-                                                                        method="post">
-                                                                        @csrf
-                                                                        {{ method_field('delete') }}
-                                                                        <button type="submit"
-                                                                                class="btn btn-danger">@lang('dashboard.Delete')</button>
-                                                                    </form>
-                                                                </div>
-                                                            </div>
+                                            </div>
+
+                                            <div id="delete-modal{{ $loop->iteration }}" class="modal fade modal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title">@lang('dashboard.confirm_delete')</h5>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <p>@lang('dashboard.sure_delete')</p>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" data-dismiss="modal" class="btn btn-dark">@lang('dashboard.close')</button>
+                                                            <form action="{{ route('doctors.destroy', $doctor->id) }}" method="post">
+                                                                @csrf
+                                                                {{ method_field('delete') }}
+                                                                <button type="submit" class="btn btn-danger">@lang('dashboard.Delete')</button>
+                                                            </form>
                                                         </div>
                                                     </div>
-                                                    {{-- <a target="_blank" href="{{ route('users.loginFromAdmin', $user->id) }}" class="btn  btn-success">@lang('dashboard.Login')</a> --}}
-
+                                                </div>
                                             </div>
                                         </td>
                                     </tr>
